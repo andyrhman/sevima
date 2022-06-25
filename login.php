@@ -71,7 +71,7 @@ include(ROOT_PATH . "/app/database/connect.php");
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="daftar.php">Daftar Vaksinasi</a>
+                                        <a class="small" href="daftar.php">Daftar</a>
                                     </div>
                                 </div>
                             </div>

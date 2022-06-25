@@ -34,6 +34,16 @@ class Ujianku
 		return $randomString;
 	}
 
+	function buatToken($length = 5) {
+		$characters = 'abcdefghiklmnopqrstuvwxyz';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+
 	// Menjalankan query
 	function execute($data = null)
 	{

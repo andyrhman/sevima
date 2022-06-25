@@ -56,9 +56,9 @@
     <div class="container">
         
         <div class="sidebar-brand-icon">
-            <a class="navbar-brand" href="index.php" style="color:#50a1f2; font-weight: 600; font-size: 30px;">
-            <i class="fa-solid fa-syringe"></i>
-            VaksinKita</a>
+            <a class="navbar-brand" href="panel.php" style="color:#50a1f2; font-weight: 600; font-size: 30px;">
+            <img src="assets/img/school.png" width="40" class="d-inline-block align-top" alt="" loading="lazy">
+            PendidikanKita</a>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,7 +181,7 @@
             </li>
 
             <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($quiz_active)) {echo "$quiz_active"; }?>">
-                <a class="mb-0 nav-link <?php if (isset($quiz_text)) {echo "$quiz_text"; }?>" href="sertifikat-vaksinasi.php">
+                <a class="mb-0 nav-link <?php if (isset($quiz_text)) {echo "$quiz_text"; }?>" href="pilih-ujian.php">
                     <i class="fa-solid fa-award"></i>                          
                     <span class="ml-3">Quiz</span>
                 </a>
