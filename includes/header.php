@@ -167,17 +167,17 @@
                 </a>
             </li>
 
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($tugas_active)) {echo "$tugas_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($tugas_text)) {echo "$tugas_text"; }?>" href="tugas.php">
+                    <i class="fa-solid fa-book-medical"></i>                         
+                    <span class="ml-3">Tugas</span>
+                </a>
+            </li>
+
             <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($sesi_active)) {echo "$sesi_active"; }?>">
                 <a class="mb-0 nav-link <?php if (isset($sesi_text)) {echo "$sesi_text"; }?>" href="sesi-pembelajaran.php">
                     <i class="fa-solid fa-award"></i>                          
                     <span class="ml-3">Sesi Pembelajaran</span>
-                </a>
-            </li>
-
-            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($tugas_active)) {echo "$tugas_active"; }?>">
-                <a class="mb-0 nav-link <?php if (isset($tugas_text)) {echo "$tugas_text"; }?>" href="pertemuan.php">
-                    <i class="fa-solid fa-book-medical"></i>                         
-                    <span class="ml-3">Daftar Tugas</span>
                 </a>
             </li>
 
