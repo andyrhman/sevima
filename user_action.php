@@ -124,11 +124,11 @@ if(isset($_POST["halaman"]))
                 $mail->Username = 'mailerbotfortest@yahoo.com';
                 $mail->Password = 'bjysjvtsllitcgdo';
                 $mail->From = 'mailerbotfortest@yahoo.com';
-                $mail->FromName = 'UjianKita';
+                $mail->FromName = 'PendidikanKita';
                 $mail->AddAddress($email);
                 $mail->WordWrap = 50;
                 $mail->IsHTML(true);
-                $mail->Subject = 'Kode verifikasi untuk Email UjianKita';
+                $mail->Subject = 'Kode verifikasi untuk Email PendidikanKita';
     
                 $message_body = '
                 <table width="100%">
@@ -158,12 +158,12 @@ if(isset($_POST["halaman"]))
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                                 <tr>
                                     <td bgcolor="#ffffff" align="left">
-                                        <p style="margin: 0;">Akun anda telah terdaftar di website UjianKita. Silahkan verifikasi akun anda dengan mengklik tombol di bawah ini.</p>
+                                        <p style="margin: 0;">Akun anda telah terdaftar di website PendidikanKita. Silahkan verifikasi akun anda dengan mengklik tombol di bawah ini.</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td bgcolor="#ffffff" align="center">
-                                        <a href="http://localhost/ujiankita/app/controllers/verifikasi-email.php?token='.$verify_token.'">Klik Aku</a>
+                                        <a href="http://localhost/pendidikankita/app/controllers/verifikasi-email.php?token='.$verify_token.'">Klik Aku</a>
                                     </td>
                                 </tr> <!-- COPY -->
                                 <tr>

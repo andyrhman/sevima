@@ -143,7 +143,7 @@ if(isset($_POST["action"]))
 			    {
 			    	$nama_baru = rand() . '.' . $exs_file;
 
-					$destinasi = 'images/' . $nama_baru;
+					$destinasi = 'img/' . $nama_baru;
 
 					move_uploaded_file($_FILES['foto_profil']['tmp_name'], $destinasi);
 
@@ -274,7 +274,7 @@ if(isset($_POST["action"]))
 			    {
 			    	$nama_baru = rand() . '.' . $exs_file;
 
-					$destinasi = 'images/' . $nama_baru;
+					$destinasi = 'img/' . $nama_baru;
 
 					move_uploaded_file($_FILES['foto_profil']['tmp_name'], $destinasi);
 

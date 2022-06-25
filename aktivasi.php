@@ -16,7 +16,7 @@ $judul_halaman = "Aktivasi";
     <div class="card-body mx-auto">
 
         
-        <h2 class="card-title mt-3 text-center">Selamat akun pendaftaran vaksinasi Covid-19 anda telah dibuat!</h2>
+        <h2 class="card-title mt-3 text-center">Selamat akun anda telah terdaftar di website kami!</h2>
 
         <div class="text-center">
             <img src="assets\img\mail-draw.png" class="img-fluid" alt="mail" width="400px">

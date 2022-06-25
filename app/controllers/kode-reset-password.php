@@ -24,11 +24,11 @@ function password_reset($get_email, $token){
     $mail->Username = 'mailerbotfortest@yahoo.com';
     $mail->Password = 'bjysjvtsllitcgdo';
     $mail->From = 'mailerbotfortest@yahoo.com';
-    $mail->FromName = 'UjianKita';
+    $mail->FromName = 'PendidikanKita';
     $mail->AddAddress($get_email);
     $mail->WordWrap = 50;
     $mail->IsHTML(true);
-    $mail->Subject = 'Permintaan reset password dari website UjianKita';
+    $mail->Subject = 'Permintaan reset password dari website PendidikanKita';
 
     $message_body = '
 
@@ -59,12 +59,12 @@ function password_reset($get_email, $token){
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="left">
-                            <p style="margin: 0;">Anda telah meminta untuk reset password anda di website UjianKita. Silahkan klik link dibawah ini untuk reset paswword anda.</p>
+                            <p style="margin: 0;">Anda telah meminta untuk reset password anda di website PendidikanKita. Silahkan klik link dibawah ini untuk reset paswword anda.</p>
                         </td>
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="center">
-                            <a href="http://localhost/ujiankita/ganti-password.php?token='.$token.'&email='.$get_email.'">Klik Aku</a>
+                            <a href="http://localhost/pendidikankita/ganti-password.php?token='.$token.'&email='.$get_email.'">Klik Aku</a>
                         </td>
                     </tr> <!-- COPY -->
                     <tr>

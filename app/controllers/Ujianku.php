@@ -132,60 +132,19 @@ class Ujianku
 	  	return $string;
 	}
 
-	function Generate_appointment_no()
+	function total_admin()
 	{
 		$this->query = "
-		SELECT MAX(no_pertemuan_vaksinasi) as no_pertemuan_vaksinasi FROM pertemuan_vaksinasi 
-		";
-
-		$result = $this->get_result();
-
-		$appointment_number = 0;
-
-		foreach($result as $row)
-		{
-			$appointment_number = $row["no_pertemuan_vaksinasi"];
-		}
-
-		if($appointment_number > 0)
-		{
-			return $appointment_number + 1;
-		}
-		else
-		{
-			return '1000';
-		}
-	}
-
-	function total_pertemuan_hari_ini()
-	{
-		$this->query = "
-		SELECT * FROM pertemuan 
-		INNER JOIN jadwal_dokter 
-		ON jadwal_dokter.id_jadwal_dokter = pertemuan.id_jadwal_dokter 
-		WHERE jadwal_tanggal_dokter = CURDATE() 
+		SELECT * FROM admin  
 		";
 		$this->execute();
 		return $this->row_count();
 	}
 
-
-	function total_pertemuan_7_hari_terakhir()
+	function total_kelas()
 	{
 		$this->query = "
-		SELECT * FROM pertemuan 
-		INNER JOIN jadwal_dokter 
-		ON jadwal_dokter.id_jadwal_dokter = pertemuan.id_jadwal_dokter 
-		WHERE jadwal_tanggal_dokter >= DATE(NOW()) - INTERVAL 7 DAY
-		";
-		$this->execute();
-		return $this->row_count();
-	}
-
-	function total_dokter()
-	{
-		$this->query = "
-		SELECT * FROM dokter 
+		SELECT * FROM kelas  
 		";
 		$this->execute();
 		return $this->row_count();
@@ -194,7 +153,7 @@ class Ujianku
 	function total_pengguna_registrasi()
 	{
 		$this->query = "
-		SELECT * FROM users 
+		SELECT * FROM pengguna  
 		";
 		$this->execute();
 		return $this->row_count();
