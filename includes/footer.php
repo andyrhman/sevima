@@ -39,19 +39,11 @@
         </div>
     </div>
     
-   <!-- Bootstrap core JavaScript-->
-   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Jquery -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/FlexStart/assets/js/main.js"></script>
 
   <script src="assets/js/sb-admin-2.min.js"></script>
 

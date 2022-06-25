@@ -16,6 +16,12 @@
 
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- DataTables -->
     <link rel="stylesheet" href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
