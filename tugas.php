@@ -95,49 +95,7 @@ if(!$object->pengguna_login())
                                         <?php
                                     }
                                     ?>
-                                    <!-- Untuk pengguna biasa -->
-                                    <?php
-
-                                    $object->query = "SELECT * FROM kelas_pengguna WHERE id_pengguna = '".$_SESSION['id_pengguna']."'";
                                     
-                                    $object->execute();
-
-                                    $dataPengguna = $object->get_result();
-
-                                    foreach ($dataPengguna as $penggunaData) {
-                                        $idKelasPengguna = $penggunaData['id_kelas'];
-                                    }
-                                  
-                                    $object->query = "SELECT * FROM tugas WHERE id_kelas = '$idKelasPengguna'";
-                                    
-                                    $object->execute();
-
-                                    $dataTugas = $object->get_result();
-
-                                    foreach ($dataTugas as $tugas) {
-                                        $judulTugas     = $tugas['judul_tugas'];
-                                        $TglMulai       = $tugas['tanggal_tugas_mulai'];
-                                        $TglBerakhir    = $tugas['tanggal_tugas_berakhir'];
-                                        $waktuMulai     = $tugas['jadwal_mulai_tugas'];
-                                        $waktuBerakhir  = $tugas['jadwal_berakhir_tugas'];
-                                        $DescTugas      = $tugas['deskripsi_tugas'];
-                                        $fileTugas      = $tugas['file_tugas'];
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $tugas['judul_tugas'];?></td>
-                                            <td><?php echo $tugas['tanggal_tugas_mulai'];?></td>
-                                            <td><?php echo $tugas['tanggal_tugas_berakhir'];?></td>
-                                            <td><?php echo $tugas['jadwal_mulai_tugas'];?></td>
-                                            <td><?php echo $tugas['jadwal_berakhir_tugas'];?></td>
-                                            <td align="center">
-                                                
-                                                <a href="tugas.php?KerjaTugas=<?php echo $tugas['id_tugas'];?>" class="btn btn-info btn-circle btn-sm tombol_edit"><i class="fas fa-edit"></i></a>
-                                            
-                                            </td>      
-                                        </tr>                                       
-                                        <?php
-                                    }
-                                    ?>
 
                                     
                                 </tbody>  
@@ -148,74 +106,6 @@ if(!$object->pengguna_login())
                 </div>
             </div>
             
-
-            <div id="kerjaTugas" class="modal fade">
-                <div class="modal-dialog modal-xl">
-                    <form action="" method="post" id="form_pertemuan" enctype="multipart/form-data">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="modal_title">Buat Tugas</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-
-                            <?php
-                                if (isset($_GET['KerjaTugas'])) {
-                                    $idTugas = $_GET['KerjaTugas'];
-            
-                                    $object->query = "SELECT * FROM tugas WHERE id_tugas = $idTugas";
-                                    $hasilTugas = $object->get_result();
-            
-                                    foreach ($hasilTugas as $rowTugas) {
-                                        ?>
-                                        <script>$('#kerjaTugas').modal('show');</script>
-
-                                        <h4><?= $rowTugas['judul_tugas']?></h4>
-                                        <small><?= $rowTugas['tanggal_tugas_berakhir']?></small>
-                                        <small><?= $rowTugas['jadwal_berakhir_tugas']?></small>
-                                        <div><?= $rowTugas['deskripsi_tugas']?></div>
-                                        <div>
-                                            <img src="<?= $rowTugas['file_tugas']?>" alt="" width="400">
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label>Masukkan jawaban anda</label>
-                                            <div>                             
-                                                <textarea class="form-control" name="deskripsi_tugas" id="deskripsi_tugas" placeholder="Masukkan jawaban"></textarea>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Lampirkan</label>
-                                            <div>                             
-                                                <input type="file" name="file_tugas" id="file_tugas" class="form-control">
-                                            </div>
-                                            
-
-                                        </div>
-
-                        
-                                          
-
-      
-                                        <?php
-                                    }
-
-                                }
-                                ?>
- 
-                                
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="serahkan_tugas" id="serahkan_tugas" class="btn btn-success btn-user">Buat Tugas</button>                           
-                                <button type="button" class="btn btn-defaul btn-user" data-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
             <div id="buatTugas" class="modal fade">
                 <div class="modal-dialog modal-xl">
@@ -404,7 +294,6 @@ if(!$object->pengguna_login())
 
 <?php include("includes/pesanToast.php");?>
 <?php 
-
 if (isset($_POST['hapusTugas'])) {
 
     $hapusPertanyaan = $_POST['hapusTugas'];

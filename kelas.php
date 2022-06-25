@@ -36,19 +36,77 @@ if(!$object->pengguna_login())
                 <div class="card mb-3">
                     <div class="card-body">
   
-
-                    <header class="bg-cover py-5" style="background-image: url(assets/img/online-courses.png); background-color:#bad7f5;">
+                    <header class="bg-dark py-5">
                         <div class="container px-5">
-                            <div class="row gx-5 mt-5">
+                            <div class="row gx-5 align-items-start justify-content-start">
                                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                                     <div class="my-5 text-xl-start">
-                                        <h1 class="display-5 fw-bolder text-white mb-2" style="font-weight: bold;">A Bootstrap 5 template for modern businesses</h1>
+                                        <?php
+                                            $AmbilId = $_GET['kelas'];
+
+                                            $object->query = "SELECT * FROM kelas 
+                                            WHERE id_kelas = '$AmbilId' 
+                                            ";
+                    
+                                            $object->execute();
+                    
+                                            $ambilDataKelas = $object->get_result();
+
+                                            foreach ($ambilDataKelas as $dataKelas) {
+                                                ?>
+                                                <h1 class="display-5 fw-bolder text-white mb-2" style="font-weight: bold;">Kelas <?= $dataKelas['nama_kelas'];?></h1>
+                                                <?php
+                                            }
+                                        
+                                        ?>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
                     </header>
+
+
+                    <!-- Untuk pengguna biasa -->
+                    <?php
+
+                    $object->query = "SELECT * FROM kelas_pengguna WHERE id_pengguna = '".$_SESSION['id_pengguna']."'";
+
+                    $object->execute();
+
+                    $dataPengguna = $object->get_result();
+
+                    foreach ($dataPengguna as $penggunaData) {
+                        $idKelasPengguna = $penggunaData['id_kelas'];
+                    }
+
+                    $object->query = "SELECT * FROM tugas INNER JOIN pengguna ON pengguna.id_pengguna = tugas.id_pembuat WHERE id_kelas = '$idKelasPengguna'";
+
+                    $object->execute();
+
+                    $dataTugas = $object->get_result();
+
+                    foreach ($dataTugas as $tugas) {
+                        // $object->query = "SELECT * FROM tugas_pengguna WHERE id_tugas = '$tugas[id_tugas]'";
+
+                        // $object->execute();
+
+                        // $dataTugas = $object->get_result();
+
+                        // if ($object->row_count() > 0) {
+                        //     # code...
+                        // }
+                        ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $tugas['judul_tugas'];?> Memposting tugas baru</h5>
+                                <p class="card-text"><?php echo $tugas['tanggal_tugas_mulai'];?></p>
+                                <a href="kerja-tugas.php?KerjaTugas=<?php echo $tugas['id_tugas'];?>" class="btn btn-info btn-circle btn-sm tombol_edit"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </div>
+                                       
+                        <?php
+                    }
+                    ?>
 
                     </div>
                 </div>
@@ -84,7 +142,6 @@ if(!$object->pengguna_login())
                 </div>
             </div>
 
-            
         <!-- Row gotter end -->
         </div>
 
