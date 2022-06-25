@@ -1,5 +1,5 @@
 <?php
-$judul_halaman = "Dashboard";
+$judul_halaman = "Kerja Tugas";
 $kelas_active = "active";
 $kelas_text = "text-white";
 

@@ -98,7 +98,7 @@ if(!$object->pengguna_login())
                         ?>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $tugas['judul_tugas'];?> Memposting tugas baru</h5>
+                                <h5 class="card-title">Tugas baru <?php echo $tugas['judul_tugas'];?> </h5>
                                 <p class="card-text"><?php echo $tugas['tanggal_tugas_mulai'];?></p>
                                 <a href="kerja-tugas.php?KerjaTugas=<?php echo $tugas['id_tugas'];?>" class="btn btn-info btn-circle btn-sm tombol_edit"><i class="fas fa-edit"></i></a>
                             </div>

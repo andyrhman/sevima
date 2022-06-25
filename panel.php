@@ -1,5 +1,5 @@
 <?php
-$judul_halaman = "Dashboard";
+$judul_halaman = "Panel";
 $kelas_active = "active";
 $kelas_text = "text-white";
 
@@ -68,12 +68,21 @@ if(!$object->pengguna_login())
 
                             foreach ($ambilData as $kelas) {
 
+                                $object->query = "SELECT * FROM kelas 
+                                INNER JOIN pengguna 
+                                ON pengguna.id_pengguna = kelas.id_pembuat 
+                                ";
+        
+                                $pembuatKelas = $object->get_result();
+                                foreach ($pembuatKelas as $create) {
+                                    $pembuat = $create['nama_pengguna'];
+                                }
                                 ?>
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div class="card kard shadow" style="border: 1px solid #b3b3ff;">
-                                            <img src="https://drive.google.com/uc?export=view&id=1aj_vT5zjJlkdEQ_VcCsdnvpVBi-Fjwyb" class="kartu" alt="...">
+                                            <img src="assets/img/school.png" class="kartu" alt="...">
                                             <div class="card-body">
                                                 <a style="font-size: 24px;" href="kelas.php?kelas=<?= $kelas['id_kelas']?>"><?= $kelas['nama_kelas']?></a>
                                                 <p class="card-text"><?= $kelas['deskripsi']?></p>
@@ -81,13 +90,7 @@ if(!$object->pengguna_login())
                                             <div class="card-body card-p">
                                                 <div class="row">
                                                     <div class="col col-xs-4 ">
-                                                        <i class="far fa-comments"></i> 456
-                                                    </div>
-                                                    <div class="col col-xs-4 ">
-                                                        <i class="far fa-heart"></i> 2.4k
-                                                    </div>
-                                                    <div class="col col-xs-4">
-                                                        <i class="fas fa-share"></i> 99
+                                                        <i class="fa-solid fa-user-graduate"></i> <?= $pembuat?>
                                                     </div>
                                                 </div>
                                             </div>

@@ -127,18 +127,19 @@
                     <span>Buat Soal</span>
                 </a>
             </li>
+            <li class="nav-item <?php if (isset($hasil_active)) {echo "$hasil_active"; }?>">
+                <a class="nav-link" href="hasil-quiz.php" >
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Hasil Quiz</span>
+                </a>
+            </li>
             <li class="nav-item <?php if (isset($kelas_active)) {echo "$kelas_active"; }?>">
                 <a class="nav-link" href="kelas.php" >
                     <i class="fa-solid fa-graduation-cap"></i>
                     <span>Kelas</span>
                 </a>
             </li>
-            <!-- <li class="nav-item <?php if (isset($pelajaran_active)) {echo "$pelajaran_active"; }?>">
-                <a class="nav-link" href="jenis-vaksin.php" >
-                    <i class="fa-solid fa-school"></i>
-                    <span>Buat Mata Pelajaran</span>
-                </a>
-            </li> -->
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">

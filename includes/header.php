@@ -107,6 +107,16 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
 
+                        <a class="dropdown-item" href="panel.php">
+                            <i class="fas fa-sm fa-fw mr-2 fa-tachometer-alt text-gray-400"></i>
+                            Kelas
+                        </a>
+
+                        <a class="dropdown-item" href="pilih-ujian.php">
+                            <i class="fas fa-sm fa-fw mr-2 fa-award text-gray-400"></i>
+                            Quiz
+                        </a>
+
                         <a class="dropdown-item" href="profil.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profil
