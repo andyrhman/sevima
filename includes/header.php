@@ -37,160 +37,163 @@
     <link rel="stylesheet" href="assets/css/loader.css" />
     <link rel="stylesheet" href="assets/css/toastSukses.css" />
     <link rel="stylesheet" href="assets/css/toastError.css" />
+    <link rel="stylesheet" href="assets/css/imgHover.css" />
 </head>
 
 
 
 <body id="page-top">
+<div class="container-fluid">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+        
+        <div class="sidebar-brand-icon">
+            <a class="navbar-brand" href="index.php" style="color:#50a1f2; font-weight: 600; font-size: 30px;">
+            <i class="fa-solid fa-syringe"></i>
+            VaksinKita</a>
+        </div>
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
-                    <i class="fa-solid fa-syringe"></i>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <?php
+                if (!isset($_SESSION['id_pengguna'])) {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login / Register</a>
+                    </li>
+
+                    <?php
+                }
+                ?>
+
+                <?php 
+                    $object->query = "
+                    SELECT * FROM pengguna 
+                    WHERE id_pengguna = '".$_SESSION['id_pengguna']."'
+                    ";
+
+                    $user_result = $object->get_result();
+                    
+                    foreach($user_result as $row)
+                    {
+                        $nama_user = $row['nama_pengguna'];
+                        $gambar_user = $row['foto_profil'];
+                    }
+
+                ?>
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-regular fa-user" style="color: #50a1f2;"></i>                    
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nama_user; ?></span>
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="userDropdown">
+
+                        <a class="dropdown-item" href="profil.php">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profil
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Side Navigattion -->
+<div class="row gutters-sm">
+
+    <div class="col-lg-3 mb-3">
+        <?php
+        $object->query = "
+        SELECT * FROM pengguna 
+        WHERE id_pengguna = '".$_SESSION["id_pengguna"]."'
+        ";
+        
+        $hasil = $object->get_result();
+        
+        foreach ($hasil as $pengguna) {
+            ?>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        
+                    <div class="kontainer">
+                        <img src="<?= $pengguna['foto_profil']?>" alt="Foto Profil" class="rounded-circle image" width="150" data-toggle="modal" data-target="#tombolGambar">
+                        <div class="middle">
+                            <div data-toggle="modal" data-target="#tombolGambar"><i class="fa-solid fa-pen-to-square"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <h4><?= $pengguna['nama_pengguna'];?></h4>
+                        <p class="text-secondary mb-1"><?= $pengguna['email'];?></p>
+                        <p class="text-muted font-size-sm"><?= $pengguna['alamat'];?></p>                                     
+                    </div>
+                    </div>
                 </div>
-                <div class="sidebar-brand-text mx-3">Dashboard</div>
-            </a>
+            </div>                    
+            <?php
+        }
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+        ?>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php if (isset($dashboard_active)) {echo "$dashboard_active"; }?>">
-                <a class="nav-link" href="dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Lainnya
-            </div>
-
-            <li class="nav-item <?php if (isset($pertemuan_active)) {echo "$pertemuan_active"; }?>">
-                <a class="nav-link" href="pertemuan.php" >
-                    <i class="fa-solid fa-book-medical"></i>
-                    <span>Riwayat Pertemuan</span>
+        <!--  -->
+        <div class="card mt-3">
+            <ul class="list-group list-group-flush navbar-nav">
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($kelas_active)) {echo "$kelas_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($kelas_text)) {echo "$kelas_text"; }?>" href="panel.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>                          
+                    <span class="ml-3">Kelas</span>
                 </a>
             </li>
 
-                <?php
-                	$object->query = "
-                    SELECT * FROM pertemuan_vaksinasi 
-                    INNER JOIN pengguna 
-                    ON pengguna.id_pengguna = pertemuan_vaksinasi.id_pengguna 
-                    WHERE pertemuan_vaksinasi.id_pengguna = '".$_SESSION["id_pengguna"]."'
-                    ";
-                
-                    $data_pertemuan = $object->get_result();
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($sesi_active)) {echo "$sesi_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($sesi_text)) {echo "$sesi_text"; }?>" href="sesi-pembelajaran.php">
+                    <i class="fa-solid fa-award"></i>                          
+                    <span class="ml-3">Sesi Pembelajaran</span>
+                </a>
+            </li>
 
-                    foreach ($data_pertemuan as $row)
-                    {
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($tugas_active)) {echo "$tugas_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($tugas_text)) {echo "$tugas_text"; }?>" href="pertemuan.php">
+                    <i class="fa-solid fa-book-medical"></i>                         
+                    <span class="ml-3">Daftar Tugas</span>
+                </a>
+            </li>
 
-                        
-                        if ($row['id_pengguna'] == $_SESSION["id_pengguna"]) {
-                            ?>
-                            <li class="nav-item <?php if (isset($tiket_active)) {echo "$tiket_active"; }?>">
-                                    <a class="nav-link" href="tiket-vaksinasi.php?id=<?= $row["id_pengguna"];?>" >
-                                    <i class="fa-solid fa-ticket"></i>
-                                    <span>Riwayat & Tiket Vaksin</span>
-                                </a>
-                            </li>
-                            <?php
-                        }else {
-                            header("Location:dashboard.php");
-                        }
-
-
-                        
-                    }
-                ?>
-                <li class="nav-item <?php if (isset($profil_active)) {echo "$profil_active"; }?>">
-                    <a class="nav-link" href="profil.php" >
-                        <i class="fa fa-id-card"></i>
-                        <span>Profil</span>
-                    </a>
-                </li>
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-
-        </ul>
-        <!-- End of Sidebar -->
-
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <?php 
-                        $object->query = "
-                        SELECT * FROM pengguna 
-                        WHERE id_pengguna = '".$_SESSION['id_pengguna']."'
-                        ";
-
-                        $user_result = $object->get_result();
-                        
-                        foreach($user_result as $row)
-                        {
-                            $nama_user = $row['nama_pengguna'];
-                            $gambar_user = $row['foto_profil'];
-                        }
-
-                        ?>
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nama_user; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?php echo $gambar_user; ?>">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-
-                                <a class="dropdown-item" href="profile.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profil
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($quiz_active)) {echo "$quiz_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($quiz_text)) {echo "$quiz_text"; }?>" href="sertifikat-vaksinasi.php">
+                    <i class="fa-solid fa-award"></i>                          
+                    <span class="ml-3">Quiz</span>
+                </a>
+            </li>
+            
+            <li class="nav-item list-group-item d-flex justify-content-between align-items-center flex-wrap <?php if (isset($profil_active)) {echo "$profil_active"; }?>">
+                <a class="mb-0 nav-link <?php if (isset($profil_text)) {echo "$profil_text"; }?>" href="profil.php">
+                    <i class="fa fa-id-card"></i>                          
+                    <span class="ml-3">Profil</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+    </div>

@@ -207,7 +207,7 @@ include("includes/loginFooter.php");
                     }
                     else
                     {
-                        window.location.href="dashboard.php";
+                        window.location.href="panel.php";
                     }
                 }
             });
