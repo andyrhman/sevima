@@ -24,6 +24,16 @@ class Ujianku
 		$this->now = date("Y-m-d H:i:s",  STRTOTIME(date('h:i:sa')));
 	}
 
+	function buatRandomString($length = 5) {
+		$characters = 'ABCDEFGHIJKLMOPQRSTUVWXTZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+
 	// Menjalankan query
 	function execute($data = null)
 	{
