@@ -360,7 +360,6 @@ $hasilData = $object->get_result();
     $id_pengguna        = $_POST['id_pengguna']; 
     $nama_pengguna      = $_POST['nama_pengguna'];
     //$email_pengguna     = $_POST['alamat_email'];
-    $nik                = $_POST['nik'];
     $tanggal_lahir      = $_POST['tanggal_lahir'];
     $jenis_kelamin      = $_POST['jenis_kelamin'];
     $nomor_hp           = $_POST['no_hp'];
@@ -371,7 +370,6 @@ $hasilData = $object->get_result();
 
     $query = "UPDATE pengguna SET 
     nama_pengguna        ='$nama_pengguna', 
-    nik                 ='$nik', 
     tanggal_lahir       ='$tanggal_lahir', 
     provinsi            ='$provinsi', 
     jenis_kelamin       ='$jenis_kelamin', 
