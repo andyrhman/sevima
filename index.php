@@ -2,9 +2,9 @@
 
 $judul_halaman = "Halaman Utama";
 
-// include('app/controllers/Vaksinku.php');
+include('app/controllers/Ujianku.php');
 
-// $object = new Vaksinku;
+$object = new Ujianku;
 
 // if(isset($_SESSION['patient_id']))
 // {
@@ -28,8 +28,6 @@ $judul_halaman = "Halaman Utama";
 <!DOCTYPE html>
 <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 
